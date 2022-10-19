@@ -1,0 +1,7 @@
+*.nc
+*.so
+# .gitignore
+*.log
+nohup.out
+*.png
+*.gif
