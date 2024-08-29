@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "elec"
+version = "0.1.0"
+description = ""
+authors = ["kenty911 <power_314_0529@yahoo.co.jp>"]
+
+[tool.poetry.dependencies]
+python = "^3.10.12"
+numpy = "^2.1.0"
+netCDF4 = "^1.7.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

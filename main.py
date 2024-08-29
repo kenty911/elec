@@ -4,14 +4,15 @@ print(datetime.now().replace(microsecond = 0),"START",__file__)
 import numpy as np
 from netCDF4 import Dataset
 import os
-from wrf import *
-import time
+# from wrf import *
+# import time
 import math
 
 #soファイルの読み込み
 from ctypes import *
 import ctypes.util  
-from numpy.ctypeslib import ndpointer 
+# from numpy.ctypeslib import ndpointer 
+# import numpy.ctypeslib
 import sys
 sys.stdout.flush()
 #soファイルを指定
@@ -36,8 +37,7 @@ ana_s_lat_idx, ana_e_lat_idx=100,250
 ana_s_lon_idx, ana_e_lon_idx=150,300
 
 
-# path=os.path.join("/home1/nakamura_kento/WRF/work/TR_Nkyushu_20170705/WDM7/wrfout_d03_2017-07-04_12:00:00")
-path=os.path.join("/home1/nakamura_kento/WRF/work/ndown_TR_Nkyushu_20170705/wrfout_d01_2017-07-04_12:00:00")
+path=os.path.join("./wrfout_d01_2017-07-04_12:00:00")
 nc = Dataset(path, "r")
 nc_var=nc.variables.keys()
 
@@ -464,68 +464,6 @@ for time_loop in range(time_idx):
 
     # if (time_loop%30==0)|(time_loop==time_idx-1): #適宜上書きする。やりすぎると時間がかかる。
         # charge=np.array(charge_a).reshape(time_idx,z_idx,lat_idx,lon_idx) #多分不要
-
-"""
-#netCDFで書き出す####################################################################
-nc = Dataset('out.nc', 'w', format='NETCDF3_CLASSIC')
-
-nc.createDimension('Time', time_idx) 
-nc.createDimension('south_north', lat_idx)           
-nc.createDimension('west_east', lon_idx)           
-nc.createDimension('bottom_top', z_idx)            
-
-Times = nc.createVariable('Times', np.dtype('double').char, ('Time'))
-Times.long_name = 'time of test variable'
-Times.units = 'days since 1968-05-23 00:00:00'
-
-XLONG = nc.createVariable('XLONG', np.dtype('double').char, ('south_north','west_east'))
-XLONG.long_name = 'east longitude'
-XLONG.units = 'degree of east longitude'
-
-XLAT = nc.createVariable('XLAT', np.dtype('double').char, ('south_north','west_east'))
-XLAT.long_name = 'north latitude'
-XLAT.units = 'degree of north latitude'
-
-charge_nc = nc.createVariable('CHARGE', np.dtype('double').char, ('Time', 'bottom_top', 'south_north','west_east'))
-charge_nc.long_name = 'charge'
-charge_nc.units = 'C'
-
-charge_g_nc = nc.createVariable('CHARGE_G', np.dtype('double').char, ('Time', 'bottom_top', 'south_north','west_east'))
-charge_g_nc.long_name = 'charge_G'
-charge_g_nc.units = 'C'
-
-charge_h_nc = nc.createVariable('CHARGE_h', np.dtype('double').char, ('Time', 'bottom_top', 'south_north','west_east'))
-charge_h_nc.long_name = 'charge_H'
-charge_h_nc.units = 'C'
-
-charge_i_nc = nc.createVariable('CHARGE_I', np.dtype('double').char, ('Time', 'bottom_top', 'south_north','west_east'))
-charge_i_nc.long_name = 'charge_I'
-charge_i_nc.units = 'C'
-
-charge_s_nc = nc.createVariable('CHARGE_S', np.dtype('double').char, ('Time', 'bottom_top', 'south_north','west_east'))
-charge_s_nc.long_name = 'charge_S'
-charge_s_nc.units = 'C'
-
-
-fod_nc = nc.createVariable('FOD', np.dtype('double').char, ('Time', 'bottom_top', 'south_north','west_east'))
-fod_nc.long_name = 'FOD'
-fod_nc.units = ''
-
-# 最後に，予め np.ndarray 等で作成しておいた値を代入します．
-
-Times[:] = wrf_datetime
-XLONG[:,:] = wrf_lon
-XLAT[:,:] = wrf_lat
-charge_nc[:,:,:,:] =charge_a
-charge_g_nc[:,:,:,:] =charge_g
-charge_h_nc[:,:,:,:] =charge_h
-charge_i_nc[:,:,:,:] =charge_i
-charge_s_nc[:,:,:,:] =charge_s
-fod_nc[:,:,:,:] = fod
-
-nc.close()
-#netCDFで書き出す####################################################################
-#"""
 
 # """
 #netCDFで書き出す####################################################################
