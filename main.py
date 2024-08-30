@@ -4,7 +4,7 @@ print(datetime.now().replace(microsecond = 0),"START",__file__)
 import numpy as np
 from netCDF4 import Dataset
 import os
-# from wrf import *
+from wrf import getvar, ALL_TIMES
 # import time
 import math
 
