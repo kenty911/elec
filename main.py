@@ -11,9 +11,9 @@ import math
 #soファイルの読み込み
 from ctypes import *
 import ctypes.util  
-# from numpy.ctypeslib import ndpointer 
-# import numpy.ctypeslib
 import sys
+import gc
+
 sys.stdout.flush()
 #soファイルを指定
 lookup      = np.ctypeslib.load_library("lookup.so",".")
@@ -33,8 +33,8 @@ den_h=912
 ana_s_time_idx,ana_e_time_idx=0,1000
 # ana_s_time_idx,ana_e_time_idx=72,108
 ana_s_z_idx,   ana_e_z_idx=0,40
-ana_s_lat_idx, ana_e_lat_idx=100,250
-ana_s_lon_idx, ana_e_lon_idx=150,300
+ana_s_lat_idx, ana_e_lat_idx=120,230
+ana_s_lon_idx, ana_e_lon_idx=170,280
 
 
 path=os.path.join("./wrfout_d01_2017-07-04_12:00:00")
@@ -96,12 +96,23 @@ print("time_step_output is",time_step,"seconds")
 
 print("get ua")
 ua = getvar(nc, "ua", timeidx=ALL_TIMES)[ana_s_time_idx:ana_e_time_idx,ana_s_z_idx:ana_e_z_idx,ana_s_lat_idx:ana_e_lat_idx,ana_s_lon_idx:ana_e_lon_idx]
+print(ua.shape, ua.__sizeof__())
+gc.collect()
+
 print("get va")
 va = getvar(nc, "va", timeidx=ALL_TIMES)[ana_s_time_idx:ana_e_time_idx,ana_s_z_idx:ana_e_z_idx,ana_s_lat_idx:ana_e_lat_idx,ana_s_lon_idx:ana_e_lon_idx]
+print(va.shape, va.__sizeof__())
+gc.collect()
+
 print("get wa")
 wa = getvar(nc, "wa", timeidx=ALL_TIMES)[ana_s_time_idx:ana_e_time_idx,ana_s_z_idx:ana_e_z_idx,ana_s_lat_idx:ana_e_lat_idx,ana_s_lon_idx:ana_e_lon_idx]
+print(wa.shape, wa.__sizeof__())
+gc.collect()
+
 print("get z")
 z = getvar(nc, "z", timeidx=ALL_TIMES)[ana_s_time_idx:ana_e_time_idx,ana_s_z_idx:ana_e_z_idx,ana_s_lat_idx:ana_e_lat_idx,ana_s_lon_idx:ana_e_lon_idx]
+print(z.shape, z.__sizeof__())
+gc.collect()
 
 # """
 #begin水平方向の格子間隔を求める#################################################################################
