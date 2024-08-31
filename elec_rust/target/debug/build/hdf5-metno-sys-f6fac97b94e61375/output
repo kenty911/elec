@@ -1,0 +1,119 @@
+Attempting to find HDF5 via pkg-config...
+cargo:rerun-if-env-changed=HDF5_NO_PKG_CONFIG
+cargo:rerun-if-env-changed=PKG_CONFIG_x86_64-unknown-linux-gnu
+cargo:rerun-if-env-changed=PKG_CONFIG_x86_64_unknown_linux_gnu
+cargo:rerun-if-env-changed=HOST_PKG_CONFIG
+cargo:rerun-if-env-changed=PKG_CONFIG
+cargo:rerun-if-env-changed=HDF5_STATIC
+cargo:rerun-if-env-changed=HDF5_DYNAMIC
+cargo:rerun-if-env-changed=PKG_CONFIG_ALL_STATIC
+cargo:rerun-if-env-changed=PKG_CONFIG_ALL_DYNAMIC
+cargo:rerun-if-env-changed=PKG_CONFIG_PATH_x86_64-unknown-linux-gnu
+cargo:rerun-if-env-changed=PKG_CONFIG_PATH_x86_64_unknown_linux_gnu
+cargo:rerun-if-env-changed=HOST_PKG_CONFIG_PATH
+cargo:rerun-if-env-changed=PKG_CONFIG_PATH
+cargo:rerun-if-env-changed=PKG_CONFIG_LIBDIR_x86_64-unknown-linux-gnu
+cargo:rerun-if-env-changed=PKG_CONFIG_LIBDIR_x86_64_unknown_linux_gnu
+cargo:rerun-if-env-changed=HOST_PKG_CONFIG_LIBDIR
+cargo:rerun-if-env-changed=PKG_CONFIG_LIBDIR
+cargo:rerun-if-env-changed=PKG_CONFIG_SYSROOT_DIR_x86_64-unknown-linux-gnu
+cargo:rerun-if-env-changed=PKG_CONFIG_SYSROOT_DIR_x86_64_unknown_linux_gnu
+cargo:rerun-if-env-changed=HOST_PKG_CONFIG_SYSROOT_DIR
+cargo:rerun-if-env-changed=PKG_CONFIG_SYSROOT_DIR
+Found HDF5 headers at:
+    "/usr/include"
+Adding to link path:
+    "/usr/lib/x86_64-linux-gnu"
+Parsing HDF5 config from:
+    "/usr/include/H5pubconf-64.h"
+Looking for HDF5 library binary...
+Adding extra link paths (ld)...
+    /usr/x86_64-redhat-linux/lib64
+    /usr/lib64
+    /usr/local/lib64
+    /lib64
+    /usr/x86_64-redhat-linux/lib
+    /usr/local/lib
+    /lib
+    /usr/lib
+Attempting to load: "/usr/lib64/libhdf5.so"
+    => runtime version = 1.8.12
+HDF5 library runtime version matches headers.
+Config {
+    inc_dir: "/usr/include",
+    link_paths: [
+        "/usr/lib/x86_64-linux-gnu",
+    ],
+    header: Header {
+        have_stdbool_h: false,
+        have_direct: false,
+        have_parallel: false,
+        have_threadsafe: false,
+        have_no_deprecated: false,
+        have_filter_deflate: true,
+        version: 1.8.12,
+    },
+}
+cargo::rustc-link-lib=dylib=hdf5
+cargo::rustc-link-search=native=/usr/lib/x86_64-linux-gnu
+cargo::rerun-if-env-changed=HDF5_DIR
+cargo::rerun-if-env-changed=HDF5_VERSION
+cargo::metadata=include=/usr/include
+cargo::metadata=library=hdf5
+cargo::rustc-check-cfg=cfg(feature, values("1.8.5"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.6"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.7"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.8"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.9"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.10"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.11"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.12"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.13"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.14"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.15"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.16"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.17"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.18"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.19"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.20"))
+cargo::rustc-check-cfg=cfg(feature, values("1.8.21"))
+cargo::rustc-check-cfg=cfg(feature, values("1.10.0"))
+cargo::rustc-check-cfg=cfg(feature, values("1.10.1"))
+cargo::rustc-check-cfg=cfg(feature, values("1.10.2"))
+cargo::rustc-check-cfg=cfg(feature, values("1.10.3"))
+cargo::rustc-check-cfg=cfg(feature, values("1.10.4"))
+cargo::rustc-check-cfg=cfg(feature, values("1.10.5"))
+cargo::rustc-check-cfg=cfg(feature, values("1.10.6"))
+cargo::rustc-check-cfg=cfg(feature, values("1.10.7"))
+cargo::rustc-check-cfg=cfg(feature, values("1.10.8"))
+cargo::rustc-check-cfg=cfg(feature, values("1.12.0"))
+cargo::rustc-check-cfg=cfg(feature, values("1.12.1"))
+cargo::rustc-check-cfg=cfg(feature, values("1.12.2"))
+cargo::rustc-check-cfg=cfg(feature, values("1.14.0"))
+cargo::rustc-check-cfg=cfg(feature, values("1.14.1"))
+cargo::rustc-check-cfg=cfg(feature, values("1.14.2"))
+cargo::rustc-check-cfg=cfg(feature, values("1.14.3"))
+cargo::rustc-check-cfg=cfg(feature, values("1.14.4"))
+cargo::rustc-cfg=feature="1.8.5"
+cargo::metadata=version_1_8_5=1
+cargo::rustc-cfg=feature="1.8.6"
+cargo::metadata=version_1_8_6=1
+cargo::rustc-cfg=feature="1.8.7"
+cargo::metadata=version_1_8_7=1
+cargo::rustc-cfg=feature="1.8.8"
+cargo::metadata=version_1_8_8=1
+cargo::rustc-cfg=feature="1.8.9"
+cargo::metadata=version_1_8_9=1
+cargo::rustc-cfg=feature="1.8.10"
+cargo::metadata=version_1_8_10=1
+cargo::rustc-cfg=feature="1.8.11"
+cargo::metadata=version_1_8_11=1
+cargo::rustc-cfg=feature="1.8.12"
+cargo::metadata=version_1_8_12=1
+cargo::rustc-check-cfg=cfg(have_stdbool_h)
+cargo::rustc-check-cfg=cfg(feature, values("have-direct"))
+cargo::rustc-check-cfg=cfg(feature, values("have-parallel"))
+cargo::rustc-check-cfg=cfg(feature, values("have-threadsafe"))
+cargo::rustc-check-cfg=cfg(feature, values("have-filter-deflate"))
+cargo::rustc-cfg=feature="have-filter-deflate"
+cargo::metadata=have_filter_deflate=1

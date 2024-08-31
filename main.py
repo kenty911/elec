@@ -14,7 +14,12 @@ import ctypes.util
 import sys
 import gc
 
-sys.stdout.flush()
+# バックグランドで実行するためのオーバーライド
+_original_print = print
+def print(*args, **kwargs):
+    kwargs.setdefault('flush', True)
+    _original_print(*args, **kwargs)
+
 #soファイルを指定
 lookup      = np.ctypeslib.load_library("lookup.so",".")
 calc_charge = np.ctypeslib.load_library("calc_charge.so",".")
@@ -30,14 +35,14 @@ den_h=912
 
 
 #解析領域を設定する
-ana_s_time_idx,ana_e_time_idx=0,1000
-# ana_s_time_idx,ana_e_time_idx=72,108
+# ana_s_time_idx,ana_e_time_idx=0,1000
+ana_s_time_idx,ana_e_time_idx=72,144+72
 ana_s_z_idx,   ana_e_z_idx=0,40
-ana_s_lat_idx, ana_e_lat_idx=120,230
-ana_s_lon_idx, ana_e_lon_idx=170,280
+ana_s_lat_idx, ana_e_lat_idx=100,250
+ana_s_lon_idx, ana_e_lon_idx=150,300
 
 
-path=os.path.join("./wrfout_d01_2017-07-04_12:00:00")
+path=os.path.join("/home1/nakamura_kento/WRF/work/ndown_TR_Nkyushu_20170705/wrfout_d03_2017-07-04_12:00:00_origin")
 nc = Dataset(path, "r")
 nc_var=nc.variables.keys()
 
@@ -338,7 +343,6 @@ for time_loop in range(time_idx):
     for i in times[time_loop]:
         tmp += i.decode()
     print(tmp)
-    sys.stdout.flush()
     time_c=ctypes.c_int(time_loop)
 
     if time_loop>0:
@@ -467,7 +471,6 @@ for time_loop in range(time_idx):
     print("phi(V) "+f'{np.nanmin(phi[time_loop,:,:,:]):.2e}'+" "+f'{np.nanmax(phi[time_loop,:,:,:]):.2e}')
     print("fod(/grid/time_step) "+f'{np.max(fod[time_loop,:,:,:]):.2e}'+" "+f'{np.mean(fod[time_loop,:,:,:]):.2e}')
     print(datetime.now().replace(microsecond = 0))
-    sys.stdout.flush()
     # time.sleep(0.3)
 
 

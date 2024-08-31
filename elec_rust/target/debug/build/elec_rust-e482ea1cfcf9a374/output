@@ -1,0 +1,2 @@
+cargo:rustc-link-lib=netcdf
+cargo:rustc-link-search=native=/opt/local/netcdf/lib

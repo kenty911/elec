@@ -20,7 +20,7 @@ import sys#nohup実行時にnohup.outを随時更新するため
 import os
 
 
-path=os.path.join("out2.nc") #パスの指定
+path=os.path.join("out.nc") #パスの指定
 
 output_dir = os.path.join("./charge")
 os.makedirs(output_dir, exist_ok=True)
